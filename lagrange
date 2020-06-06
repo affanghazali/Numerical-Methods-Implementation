@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+float lagrange_formula(float* x,float* y,float val,int size){
+	float answer=0;
+    float l[size] = {0};
+    for(int a=0;a<size;a++){
+    l[a]=1;
+    for(int b=0;b<size;b++){
+        if(a!=b){
+        l[a]= l[a]*((val - x[b])/(x[a] - x[b]));
+        }
+    }
+    }
+    for(int a=0;a<size;a++){
+        answer= (l[a]*y[a])+ answer;
+    }
+    
+    return answer;
+}
+int main(){
+	float val=0;
+	int degree=0;
+	cout<<"Enter number of values of x and y:";
+    cin>>degree;
+    cout<<endl;
+	float x[degree];
+    float y[degree];
+    for(int c=0;c<degree;c++){
+    	cout<<"Enter "<<c<<"th value of x:";
+    	cin>>x[c];
+    	cout<<"Enter "<<c<<"th value of y:";
+    	cin>>y[c];
+    	cout<<endl;
+	}
+	cout<<"Enter number of value of x to find:";
+	cin>>val;
+	cout<<"The value of x is approximate to:"<<lagrange_formula(x,y,val,degree)<<endl;
+//	cout<<lagrange_formula(x,y,4,2)<<endl;
+}
